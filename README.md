@@ -12,14 +12,13 @@
 
 ## 📖 About the Project
 
-**WizzWords** is a mobile application designed to facilitate communication for children with special needs through the use of ARASAAC pictograms (Augmentative and Alternative Communication system). The application uses artificial intelligence to generate natural phrases from selected symbols, enabling more fluid and effective communication.
+**WizzWords** is a mobile application designed to facilitate communication for children with special needs through the use of ARASAAC pictograms. The application uses artificial intelligence to generate natural phrases from selected symbols, which are shown as flashcards with AI-generated images and text-to-speech.
 
 ### 🎯 Objectives
 
-- **Translate** PCS symbols, text, speech, or images into natural language
-- **Convert** caregiver speech or text into PCS symbol sequences
-- **Adapt** to each child's communication profile and privacy constraints
-- **Provide** an accessible and easy-to-use interface
+- **Generate** natural-language phrases from selected PCS symbols and display them as flashcards with an image and audio.
+- **Adapt** to each child's communication profile and preferences (themes, categories, parent controls).
+- **Provide** an accessible, easy-to-use interface with large touch targets and high-contrast color palettes.
 
 ---
 
@@ -27,22 +26,22 @@
 
 ### 🎨 User Interface
 - ✅ **Accessible design** with large buttons and high readability
-- ✅ **6 customizable color palettes** with WCAG AA contrast compliance
+- ✅ **6 customizable color palettes** 
 - ✅ **Dual mode**: Interface for children and menu for parents/caregivers
-- ✅ **Custom notification system** (Toast)
+- ✅ **Custom notification system** 
 - ✅ **Clear visual indicators** for all actions
 
 ### 🖼️ ARASAAC Pictograms
 - ✅ **Complete integration** with ARASAAC library
 - ✅ **Smart pictogram search** by categories
 - ✅ **User-customizable categories**
-- ✅ **Dynamic pictogram loading** with progress indicators
-- ✅ **Multi-language support** (es, en, fr, it, pt, de, ca)
+- ✅ **Dynamic pictogram loading**
 
 ### 🤖 Artificial Intelligence
-- ✅ **Natural phrase generation** using Azure OpenAI
-- ✅ **Bidirectional translation**: Symbols → Text and Text → Symbols
-- ✅ **Multiple phrase variants** generation
+- ✅ **Natural phrase generation** from selected symbols using Azure OpenAI
+
+- ✅ **AI-generated images** on flashcards (DALL-E 3 via backend)
+- ✅ **“Generate More”** for extra phrase variants
 
 ### 🔊 Text-to-Speech
 - ✅ **Voice playback** integrated with Expo Speech
@@ -52,15 +51,15 @@
 ### 👤 User Management
 - ✅ **Firebase authentication**
 - ✅ **Personalized user profiles**
-- ✅ **User-scoped categories** (data isolation)
+- ✅ **User-scoped categories** 
 - ✅ **Onboarding system** for new users
 - ✅ **Custom avatar generation**
 
 ### 🔒 Security and Accessibility
-- ✅ **Protected parent mode** with password and 5-attempt lockout
-- ✅ **Robust password validation**
-- ✅ **Screen reader support**
-- ✅ **High contrast themes** for better visibility
+- ✅ **Protected parent mode** with password and 5-attempt lockout (30s cooldown after 5 failed tries)
+- ✅ **Password validation** on registration and parent-menu access (min length, no common weak passwords)
+- ✅ **Accessibility labels** on main buttons and navigation for screen readers
+
 
 ---
 
@@ -70,9 +69,9 @@
 
 - **Node.js** v18 or higher
 - **npm** or **yarn**
-- **Expo CLI** (installed automatically)
+- **Expo CLI** 
 - **Azure OpenAI API** (required for AI features)
-- **Firebase** (optional, for authentication and storage)
+- **Firebase** (required for app login and user data)
 
 ### Quick Installation
 
@@ -106,12 +105,12 @@
    ```env
    PORT=3000
    
-   # Azure OpenAI (Required for AI features)
+   # Azure OpenAI 
    AZURE_OPENAI_PHRASE_URL=https://your-resource.cognitiveservices.azure.com/openai/responses?api-version=2025-04-01-preview
    AZURE_OPENAI_PHRASE_KEY=your_azure_key
    AZURE_OPENAI_PHRASE_DEPLOYMENT=gpt-5-mini
    
-   # Azure OpenAI Image Generation (DALL-E) - Optional
+   # Azure OpenAI Image Generation (DALL-E)
    AZURE_OPENAI_IMAGE_ENDPOINT=https://your-resource.cognitiveservices.azure.com/openai/deployments/dall-e-3/images/generations?api-version=2024-02-01
    AZURE_OPENAI_IMAGE_API_KEY=your_azure_image_key
    ```
@@ -119,8 +118,6 @@
 4. **Start the backend server** (Terminal 1)
    ```bash
    npm run server
-   # Or for development with auto-reload:
-   npm run server:dev
    ```
 
 5. **Start the application** (Terminal 2)
@@ -134,13 +131,10 @@
 - Set `EXPO_PUBLIC_API_URL=http://10.0.2.2:3000` in `frontend/.env`
 
 #### iOS Simulator
-- ✅ Already configured for `http://localhost:3000`
+-  Already configured for `http://localhost:3000`
 
 #### Physical Device
 - Set `EXPO_PUBLIC_API_URL=http://YOUR_LOCAL_IP:3000` in `frontend/.env`
-- Find your local IP:
-  - **Windows**: `ipconfig` → look for "IPv4"
-  - **Mac/Linux**: `ifconfig` or `ip addr`
 
 ---
 
@@ -171,10 +165,10 @@ AZURE_OPENAI_IMAGE_API_KEY=your_key
 
 ### Verifying Configuration
 
-After starting the backend, you'll see:
+After starting the backend, you'll see in the console:
 ```
-📡 API Keys configured:
-   - Azure OpenAI: ✅ Yes (or ❌ No)
+API Keys configured:
+   - Azure OpenAI: Yes   (or No if not configured)
 ```
 
 ---
@@ -195,7 +189,7 @@ After starting the backend, you'll see:
 | Parameter | Type | Description |
 |-----------|------|-------------|
 | `color` | Boolean | Color version |
-| `backgroundColor` | String | Background color (e.g., "white") |
+| `backgroundColor` | String | Background color  |
 | `plural` | Boolean | Plural form |
 | `skin` | String | Skin color variation |
 | `hair` | String | Hair color variation |
@@ -205,19 +199,7 @@ After starting the backend, you'll see:
 curl "http://localhost:3000/api/arasaac/image/2?color=true&backgroundColor=white"
 ```
 
-### Common Pictogram IDs
 
-| Category | Word | ID |
-|----------|------|----|
-| **Pronouns** | I (yo) | 6632 |
-| | You (tú) | 6625 |
-| **Verbs** | Want (querer) | 5441 |
-| | Like (gustar) | 37826 |
-| | Play (jugar) | 23392 |
-| **Food** | Pizza | 2527 |
-| **Places** | School | 32446 |
-| **Emotions** | Happy | 14325 |
-| | Sad | 35066 |
 
 ### Using in React Native
 
@@ -248,10 +230,10 @@ const url = getPictogramImageUrl(2, {
    - Tap a selected symbol to remove it
 
 2. **Phrase Generation**
-   - Press "Generate Phrases" to create natural phrases
-   - Phrases are generated using AI and displayed as flashcards
+   - Press "Generate Phrases" to create natural phrases from the selected symbols
+   - Phrases are shown as flashcards with AI-generated images
    - Tap a phrase to hear it with text-to-speech
-   - Press "Generate More" to get variants
+   - Press "Generate More" to get one extra phrase variant
 
 3. **Parent Menu**
    - Access the password-protected menu
@@ -270,69 +252,30 @@ const url = getPictogramImageUrl(2, {
 
 ## 🏛️ Architecture
 
-```mermaid
-graph TB
-    subgraph "Frontend Layer - React Native/Expo"
-        A[App.tsx] --> B[Navigation]
-        B --> C[WelcomeScreen]
-        B --> D[PCSScreen]
-        B --> E[PhraseSelectionScreen]
-        B --> F[ParentMenuScreen]
-        B --> G[ColorSettingsScreen]
-        
-        D --> H[Pictogram Grid]
-        E --> J[Phrase List]
-        E --> K[Text-to-Speech]
-        
-        L[ThemeContext] --> A
-        M[API Client] --> N[Services]
-    end
-    
-    subgraph "API Gateway - Express.js"
-        O[Express Server] --> P[CORS Middleware]
-        O --> Q[Route Handlers]
-        
-        Q --> R[/api/generate-phrases]
-        Q --> S[/api/arasaac/*]
-        Q --> V[/api/health]
-    end
-    
-    subgraph "Services Layer"
-        X[Gemini Service] --> Y[Google Gemini API]
-        Z[Azure Service] --> AA[Azure OpenAI API]
-        AB[ARASAAC Service] --> AC[ARASAAC API]
-    end
-    
-    subgraph "Data Layer"
-        AF[Firebase Firestore] --> AG[User Profiles]
-        AK[Firebase Auth] --> AL[Authentication]
-    end
-    
-    N --> O
-```
 
 ### Project Structure
 
 ```
-wizzwords-aac-platform/
+AAC/
 ├── frontend/                 # React Native/Expo application
-│   ├── screens/              # Application screens
+│   ├── screens/              # Application screens 
 │   ├── components/           # Reusable components
-│   ├── services/             # Services (Firebase, API, etc.)
+│   ├── services/             # Services (Firebase, API, arasaac, etc.)
 │   ├── context/              # Context providers (Theme, User, Toast)
 │   ├── types/                # TypeScript definitions
 │   └── assets/               # Images and resources
 │
-├── backend/                  # Node.js/Express server
-│   ├── services/             # Services (ARASAAC, Gemini, Azure, etc.)
-│   ├── data/                 # Data and categories
-│   └── index.js              # Main server
+├── backend/                  # Node.js/Express server (TypeScript)
+│   ├── index.ts              # Main server entry
+│   ├── config.ts             # Centralized configuration (env, Azure, server)
+│   ├── services/             # Services
+│   └── data/                 # Data and categories (predefined, user_categories)
 │
-├── docs/                     # Documentation
-│   └── images/               # Documentation images
-│
+├── assets/                   # Project-level assets (e.g. Polimi logo)
 └── README.md                 # This file
 ```
+
+For a complete API reference and backend-only setup, see [backend/README.md](backend/README.md).
 
 ---
 
@@ -358,9 +301,8 @@ wizzwords-aac-platform/
 - **ARASAAC API** for pictograms
 
 ### Storage
-- **Firebase Firestore** for user data
-- **Firebase Storage** for files
-- **AsyncStorage** for local data
+- **Firebase Firestore** for user profiles, preferences, and custom symbols
+- **AsyncStorage** for local caching (theme, user cache, lockout state)
 
 ---
 
@@ -368,21 +310,23 @@ wizzwords-aac-platform/
 
 ### Available Scripts
 
+All commands are run from the **repository root** (where the main `package.json` lives).
+
 ```bash
 # Installation
-npm run install:all          # Install all dependencies
+npm run install:all          # Install root, frontend and backend dependencies
 npm run frontend:install     # Install frontend only
 npm run backend:install      # Install backend only
 
-# Development
+# Frontend
 npm start                    # Start frontend (Expo)
-npm run frontend:start       # Start frontend specifically
-npm run frontend:android     # Start on Android
-npm run frontend:ios         # Start on iOS
+npm run frontend:start       # Start Expo dev server
+npm run frontend:android     # Run on Android
+npm run frontend:ios         # Run on iOS
 
-# Backend
-npm run server               # Start backend server
-npm run server:dev           # Start with auto-reload
+# Backend (from root)
+npm run server               # Start backend (runs backend via backend:start)
+npm run server:dev           # Start backend with auto-reload (nodemon)
 ```
 
 ### API Endpoints Reference
@@ -392,12 +336,24 @@ npm run server:dev           # Start with auto-reload
 | `/api/health` | GET | Health check |
 | `/api/generate-phrases` | POST | Generate phrases with Azure OpenAI |
 | `/api/generate-more-phrases` | POST | Generate additional phrases |
-| `/api/azure/generate-phrases` | POST | Direct Azure OpenAI call |
-| `/api/generate-image` | POST | Generate image with DALL-E |
-| `/api/arasaac/search/:lang/:term` | GET | Search pictograms |
-| `/api/arasaac/image/:id` | GET | Get pictogram image |
-| `/api/categories` | GET/POST | Manage categories |
+| `/api/generate-image` | POST | Generate single image with DALL-E |
+| `/api/generate-images` | POST | Generate multiple images for phrases |
+| `/api/arasaac/search/:language/:searchTerm` | GET | Search pictograms |
+| `/api/arasaac/pictogram/:language/:idPictogram` | GET | Get pictogram details |
+| `/api/arasaac/image/:idPictogram` | GET | Get pictogram image |
+| `/api/arasaac/search-multiple` | POST | Search multiple words |
+| `/api/categories` | GET | Get all categories (requires `?userId=`) |
+| `/api/categories` | POST | Create custom category (auth) |
+| `/api/categories/:categoryName` | GET | Get category pictograms (requires `?userId=`) |
+| `/api/categories/empty` | POST | Create empty category (auth) |
+| `/api/categories/:categoryName` | DELETE | Delete custom category (auth) |
+| `/api/categories/initialize` | POST | Initialize predefined categories |
+| `/api/user` | GET / PUT | Get or update user (auth) |
+| `/api/user/reset` | POST | Reset user to defaults (auth) |
+| `/api/user/initials` | GET | Get user initials (auth) |
 | `/api/avatar` | POST | Generate user avatar |
+
+**Auth**: endpoints marked *(auth)* require `Authorization: Bearer <userId>` or `userId` in body/query. For the full list with request/response details, see [backend/README.md](backend/README.md).
 
 ### Troubleshooting
 
@@ -418,20 +374,6 @@ npm run server:dev           # Start with auto-reload
 
 ---
 
-## 🤝 Contributing
-
-This is an academic project developed for **Advanced User Interfaces** at **Politecnico di Milano (Polimi)**.
-
-If you want to contribute:
-
-1. Fork the project
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
----
-
 ## 📄 License
 
 This project is an academic prototype developed for the **Advanced User Interfaces** course at:
@@ -448,14 +390,10 @@ This project is an academic prototype developed for the **Advanced User Interfac
 
 ## 👥 Authors
 
-Developed as part of the Advanced User Interfaces academic project.
 
----
 
-## 🙏 Acknowledgments
-
-- **ARASAAC** for providing the open-source pictogram library
-- **Google Gemini** for the AI API
-- **Azure OpenAI** for the enterprise AI services
-- **Expo** for the React Native framework
-- **Firebase** for backend services
+| Author | Contact |
+|--------|---------|
+| Massimo Bakker | [mwgbakker@student.tudelft.nl](mailto:mwgbakker@student.tudelft.nl) |
+| Pablo Jesús Herrero Díaz | [pablojesus.herrero@mail.polimi.it](mailto:pablojesus.herrero@mail.polimi.it) |
+| José Martínez Estévez | [jose3.martinez@mail.polimi.it](mailto:jose3.martinez@mail.polimi.it) |
