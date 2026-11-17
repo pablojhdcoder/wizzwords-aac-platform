@@ -1,399 +1,241 @@
-# 🗣️ WizzWords - Augmentative and Alternative Communication Platform
+<p align="center">
+  <img src="frontend/assets/logo.jpeg" alt="WizzWords logo" width="180">
+</p>
 
-<div align="center">
+<h1 align="center">WizzWords</h1>
 
-**Augmentative and Alternative Communication (AAC) platform that helps children with special needs communicate through ARASAAC pictograms and AI-powered phrase generation.**
+<p align="center">
+  <strong>An AAC app that helps children with communication difficulties express themselves through ARASAAC pictograms, AI-generated phrases and text-to-speech.</strong>
+</p>
 
-[Features](#-features) • [Installation](#-installation) • [API Configuration](#-api-configuration) • [Usage](#-usage) • [Architecture](#-architecture) • [Technologies](#-technologies)
+<p align="center">
+  <img src="https://img.shields.io/badge/React_Native-0.81-61DAFB?logo=react&logoColor=white" alt="React Native">
+  <img src="https://img.shields.io/badge/Expo-54-000020?logo=expo&logoColor=white" alt="Expo">
+  <img src="https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white" alt="TypeScript">
+  <img src="https://img.shields.io/badge/Express-4-000000?logo=express&logoColor=white" alt="Express">
+  <img src="https://img.shields.io/badge/Firebase-12-FFCA28?logo=firebase&logoColor=black" alt="Firebase">
+  <img src="https://img.shields.io/badge/Azure_OpenAI-DALL·E_3-0078D4?logo=microsoftazure&logoColor=white" alt="Azure OpenAI">
+</p>
 
-</div>
+<p align="center">
+  <a href="#-about">About</a> •
+  <a href="#-demo">Demo</a> •
+  <a href="#-screenshots">Screenshots</a> •
+  <a href="#-features">Features</a> •
+  <a href="#-tech-stack">Tech stack</a> •
+  <a href="#-architecture">Architecture</a> •
+  <a href="#-getting-started">Getting started</a>
+</p>
 
 ---
 
-## 📖 About the Project
+## 📖 About
 
-**WizzWords** is a mobile application designed to facilitate communication for children with special needs through the use of ARASAAC pictograms. The application uses artificial intelligence to generate natural phrases from selected symbols, which are shown as flashcards with AI-generated images and text-to-speech.
+Children who cannot rely on speech need a simple way to build and voice everyday messages. **WizzWords** is a mobile Augmentative and Alternative Communication (AAC) app for that purpose.
+
+The child browses pictogram categories, selects symbols on a communication board and generates short, natural phrases. Those phrases appear as flashcards with an AI-generated illustration and can be spoken aloud with text-to-speech. Phrase wording is adjusted to the child's age when it has been set. A password-protected parent menu lets caregivers manage themes, categories, custom symbols and the child's profile.
 
 ### 🎯 Objectives
 
-- **Generate** natural-language phrases from selected PCS symbols and display them as flashcards with an image and audio.
-- **Adapt** to each child's communication profile and preferences (themes, categories, parent controls).
+- **Generate** natural-language phrases from selected PCS symbols and show them as flashcards with an image and audio.
+- **Adapt** to each child's profile and preferences (themes, categories and parent controls).
 - **Provide** an accessible, easy-to-use interface with large touch targets and high-contrast color palettes.
 
----
+## 🎥 Demo
+
+
+
+https://github.com/user-attachments/assets/af3dac12-67ab-4113-a6b4-06d8a4551faa
+
+
+
+## 📱 Screenshots
+
+<table>
+  <tr>
+    <td align="center" width="25%">
+      <img src="docs/screenshots/board.jpg" width="200" alt="Communication board"><br>
+      <sub>Communication board</sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="docs/screenshots/setup-categories.jpg" width="200" alt="Setup: categories"><br>
+      <sub>Setup: categories</sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="docs/screenshots/parent-menu.jpg" width="200" alt="Parent menu"><br>
+      <sub>Parent menu</sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="docs/screenshots/custom-symbol.jpg" width="200" alt="Add custom symbol"><br>
+      <sub>Add custom symbol</sub>
+    </td>
+  </tr>
+</table>
 
 ## ✨ Features
 
-### 🎨 User Interface
-- ✅ **Accessible design** with large buttons and high readability
-- ✅ **6 customizable color palettes** 
-- ✅ **Dual mode**: Interface for children and menu for parents/caregivers
-- ✅ **Custom notification system** 
-- ✅ **Clear visual indicators** for all actions
+### 🎨 User interface
 
-### 🖼️ ARASAAC Pictograms
-- ✅ **Complete integration** with ARASAAC library
-- ✅ **Smart pictogram search** by categories
-- ✅ **User-customizable categories**
-- ✅ **Dynamic pictogram loading**
+- Accessible layout with large buttons and high readability
+- Six color palettes: Purple Harmony, Ocean Blue, Forest Green, Sunshine Bright, Soft Pastel and Earthy Tones
+- Dual mode: a communication board for the child and a menu for parents or caregivers
+- In-app toast notifications
 
-### 🤖 Artificial Intelligence
-- ✅ **Natural phrase generation** from selected symbols using Azure OpenAI
+### 🖼️ ARASAAC pictograms
 
-- ✅ **AI-generated images** on flashcards (DALL-E 3 via backend)
-- ✅ **“Generate More”** for extra phrase variants
+- ARASAAC pictogram library, loaded through the backend
+- Predefined categories: Food, Games, School, Family, Sports, Music, Animals and Transport
+- Custom categories (empty, or filled with standard PCS symbols from a description), with the option to hide or show them
+- Custom symbols added from the photo library
 
-### 🔊 Text-to-Speech
-- ✅ **Voice playback** integrated with Expo Speech
-- ✅ **Interactive flashcards** with audio indicator
-- ✅ **Tap to play** generated phrases
+### 🤖 Artificial intelligence
 
-### 👤 User Management
-- ✅ **Firebase authentication**
-- ✅ **Personalized user profiles**
-- ✅ **User-scoped categories** 
-- ✅ **Onboarding system** for new users
-- ✅ **Custom avatar generation**
+- Natural phrase generation from selected symbols with Azure OpenAI (three child-friendly phrases, with language adapted to the child's age when it is set)
+- AI-generated flashcard images (DALL·E 3 via the backend)
+- **Generate More** adds one extra phrase variant
 
-### 🔒 Security and Accessibility
-- ✅ **Protected parent mode** with password and 5-attempt lockout (30s cooldown after 5 failed tries)
-- ✅ **Password validation** on registration and parent-menu access (min length, no common weak passwords)
-- ✅ **Accessibility labels** on main buttons and navigation for screen readers
+### 🔊 Text-to-speech
 
+- Voice playback with Expo Speech
+- Tap a flashcard to hear the generated phrase
 
----
+### 👤 User management
 
-## 🚀 Installation
+- Firebase Authentication with email and password
+- Profiles and preferences stored in Firestore (name, email, child's age, categories)
+- Onboarding for new users: child's age, color theme, categories and parent-menu password
+- Dicebear avatars
 
-### Prerequisites
+### 🔒 Security and accessibility
 
-- **Node.js** v18 or higher
-- **npm** or **yarn**
-- **Expo CLI** 
-- **Azure OpenAI API** (required for AI features)
-- **Firebase** (required for app login and user data)
+- Password-protected parent menu, with a 30-second lockout after 5 failed attempts
+- Parent-menu password must be at least 6 characters and cannot be a common weak password
+- Accessibility labels on main buttons and navigation for screen readers
 
-### Quick Installation
+## 🛠️ Tech stack
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/pablojhdcoder/wizzwords-aac-platform.git
-   cd wizzwords-aac-platform
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm run install:all
-   ```
-
-3. **Configure environment variables**
-   
-   Create `frontend/.env` file:
-   ```env
-   EXPO_PUBLIC_API_URL=http://localhost:3000
-   
-   # Firebase Configuration
-   EXPO_PUBLIC_FIREBASE_API_KEY=your_firebase_api_key
-   EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
-   EXPO_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
-   EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET=your_project.firebasestorage.app
-   EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
-   EXPO_PUBLIC_FIREBASE_APP_ID=your_app_id
-   ```
-   
-   Create `backend/.env` file:
-   ```env
-   PORT=3000
-   
-   # Azure OpenAI 
-   AZURE_OPENAI_PHRASE_URL=https://your-resource.cognitiveservices.azure.com/openai/responses?api-version=2025-04-01-preview
-   AZURE_OPENAI_PHRASE_KEY=your_azure_key
-   AZURE_OPENAI_PHRASE_DEPLOYMENT=gpt-5-mini
-   
-   # Azure OpenAI Image Generation (DALL-E)
-   AZURE_OPENAI_IMAGE_ENDPOINT=https://your-resource.cognitiveservices.azure.com/openai/deployments/dall-e-3/images/generations?api-version=2024-02-01
-   AZURE_OPENAI_IMAGE_API_KEY=your_azure_image_key
-   ```
-
-4. **Start the backend server** (Terminal 1)
-   ```bash
-   npm run server
-   ```
-
-5. **Start the application** (Terminal 2)
-   ```bash
-   npm start
-   ```
-
-### Platform Configuration
-
-#### Android Emulator
-- Set `EXPO_PUBLIC_API_URL=http://10.0.2.2:3000` in `frontend/.env`
-
-#### iOS Simulator
--  Already configured for `http://localhost:3000`
-
-#### Physical Device
-- Set `EXPO_PUBLIC_API_URL=http://YOUR_LOCAL_IP:3000` in `frontend/.env`
-
----
-
-## 🔧 API Configuration
-
-### Azure OpenAI API (Required)
-
-1. Go to [Azure Portal](https://portal.azure.com)
-2. Navigate to your Azure OpenAI resource
-3. Go to "Keys and Endpoint" section
-4. Copy the complete endpoint URL and API key
-
-**Configuration:**
-```env
-# Phrase Generation
-AZURE_OPENAI_PHRASE_URL=https://your-resource.cognitiveservices.azure.com/openai/responses?api-version=2025-04-01-preview
-AZURE_OPENAI_PHRASE_KEY=your_key
-AZURE_OPENAI_PHRASE_DEPLOYMENT=gpt-5-mini
-
-# Image Generation (DALL-E)
-AZURE_OPENAI_IMAGE_ENDPOINT=https://your-resource.cognitiveservices.azure.com/openai/deployments/dall-e-3/images/generations?api-version=2024-02-01
-AZURE_OPENAI_IMAGE_API_KEY=your_key
-```
-
-**Available Models:**
-- `gpt-5-mini`: Cost-effective (default)
-- `gpt-4o`: More powerful but expensive
-
-### Verifying Configuration
-
-After starting the backend, you'll see in the console:
-```
-API Keys configured:
-   - Azure OpenAI: Yes   (or No if not configured)
-```
-
----
-
-## 🖼️ ARASAAC Integration
-
-### API Endpoints
-
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/api/arasaac/search/:language/:searchTerm` | GET | Search pictograms |
-| `/api/arasaac/pictogram/:language/:idPictogram` | GET | Get pictogram details |
-| `/api/arasaac/image/:idPictogram` | GET | Get pictogram image |
-| `/api/arasaac/search-multiple` | POST | Search multiple words |
-
-### Image Customization Options
-
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `color` | Boolean | Color version |
-| `backgroundColor` | String | Background color  |
-| `plural` | Boolean | Plural form |
-| `skin` | String | Skin color variation |
-| `hair` | String | Hair color variation |
-
-**Example:**
-```bash
-curl "http://localhost:3000/api/arasaac/image/2?color=true&backgroundColor=white"
-```
-
-
-
-### Using in React Native
-
-```typescript
-import { getPictogramImageUrl } from './services/arasaacService';
-
-// Basic image
-const url = getPictogramImageUrl(2);
-
-// With customization
-const url = getPictogramImageUrl(2, {
-  color: true,
-  backgroundColor: 'white',
-  plural: false
-});
-```
-
----
-
-## 📱 Usage
-
-### Main Flow
-
-1. **Pictogram Selection**
-   - Navigate through categories (Food, Games, School, Family, etc.)
-   - Select pictograms by tapping the symbols
-   - Selected symbols appear in the top bar
-   - Tap a selected symbol to remove it
-
-2. **Phrase Generation**
-   - Press "Generate Phrases" to create natural phrases from the selected symbols
-   - Phrases are shown as flashcards with AI-generated images
-   - Tap a phrase to hear it with text-to-speech
-   - Press "Generate More" to get one extra phrase variant
-
-3. **Parent Menu**
-   - Access the password-protected menu
-   - Manage custom categories
-   - Configure user preferences
-   - Edit profile and settings
-
-### Advanced Features
-
-- **Custom Categories**: Create and manage your own pictogram categories
-- **Customizable Themes**: Choose from 6 accessible color palettes
-- **User Profile**: Customize name, email, and preferences
-- **Onboarding**: Initial guide for new users
-
----
+| Layer | Technologies |
+|-------|----------------|
+| Frontend | React Native 0.81, Expo 54, TypeScript, React Navigation, Expo Speech, Expo Image Picker, AsyncStorage |
+| Backend | Node.js, Express, TypeScript |
+| Auth and data | Firebase Authentication, Cloud Firestore |
+| AI | Azure OpenAI (phrase generation; default deployment `gpt-5-mini`), Azure OpenAI DALL·E 3 (flashcard images) |
+| Pictograms | [ARASAAC](https://arasaac.org) (proxied by the backend) |
+| Avatars | Dicebear (`botttsNeutral`) |
 
 ## 🏛️ Architecture
 
-
-### Project Structure
+The Expo app talks to a local Express backend that proxies ARASAAC and Azure OpenAI (avoiding CORS issues on the client). User accounts and preferences live in Firebase.
 
 ```
-AAC/
-├── frontend/                 # React Native/Expo application
-│   ├── screens/              # Application screens 
-│   ├── components/           # Reusable components
-│   ├── services/             # Services (Firebase, API, arasaac, etc.)
-│   ├── context/              # Context providers (Theme, User, Toast)
-│   ├── types/                # TypeScript definitions
-│   └── assets/               # Images and resources
-│
-├── backend/                  # Node.js/Express server (TypeScript)
-│   ├── index.ts              # Main server entry
-│   ├── config.ts             # Centralized configuration (env, Azure, server)
-│   ├── services/             # Services
-│   └── data/                 # Data and categories (predefined, user_categories)
-│
-├── assets/                   # Project-level assets (e.g. Polimi logo)
-└── README.md                 # This file
+wizzwords-aac-platform/
+├── frontend/                 # React Native / Expo app
+│   ├── screens/
+│   ├── components/
+│   ├── services/             # Firebase, API client, ARASAAC helpers
+│   ├── context/              # Theme, user, toast
+│   ├── types/
+│   └── assets/               # App logo and UI assets
+├── backend/                  # Express API (TypeScript)
+│   ├── index.ts
+│   ├── config.ts             # Env and Azure configuration
+│   ├── services/             # Phrases, images, ARASAAC, categories, users, avatars
+│   └── data/                 # Predefined categories and pictogram data
+├── assets/                   # Project-level assets (Polimi logo)
+└── README.md
 ```
 
-For a complete API reference and backend-only setup, see [backend/README.md](backend/README.md).
+The full API reference is in [backend/README.md](backend/README.md).
 
----
+## 🚀 Getting started
 
-## 🛠️ Technologies
+### Prerequisites
 
-### Frontend
-- **React Native** with Expo SDK 54
-- **TypeScript** for type safety
-- **React Navigation** for navigation
-- **Firebase** for authentication and storage
-- **Expo Speech** for text-to-speech
-- **React Context API** for state management
+- Node.js 18+
+- npm
+- A Firebase project (Authentication and Firestore)
+- An Azure OpenAI resource (required for phrase and image generation)
 
-### Backend
-- **Node.js** (v18+)
-- **Express.js** framework
-- **TypeScript** for services
-- **CORS** middleware
-
-### AI Services
-- **Azure OpenAI** (GPT-5-mini for phrase generation)
-- **Azure OpenAI DALL-E 3** for image generation
-- **ARASAAC API** for pictograms
-
-### Storage
-- **Firebase Firestore** for user profiles, preferences, and custom symbols
-- **AsyncStorage** for local caching (theme, user cache, lockout state)
-
----
-
-## 🧪 Development
-
-### Available Scripts
-
-All commands are run from the **repository root** (where the main `package.json` lives).
+### Install
 
 ```bash
-# Installation
-npm run install:all          # Install root, frontend and backend dependencies
-npm run frontend:install     # Install frontend only
-npm run backend:install      # Install backend only
-
-# Frontend
-npm start                    # Start frontend (Expo)
-npm run frontend:start       # Start Expo dev server
-npm run frontend:android     # Run on Android
-npm run frontend:ios         # Run on iOS
-
-# Backend (from root)
-npm run server               # Start backend (runs backend via backend:start)
-npm run server:dev           # Start backend with auto-reload (nodemon)
+git clone https://github.com/pablojhdcoder/wizzwords-aac-platform.git
+cd wizzwords-aac-platform
+npm run install:all
 ```
 
-### API Endpoints Reference
+### Environment variables
 
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/api/health` | GET | Health check |
-| `/api/generate-phrases` | POST | Generate phrases with Azure OpenAI |
-| `/api/generate-more-phrases` | POST | Generate additional phrases |
-| `/api/generate-image` | POST | Generate single image with DALL-E |
-| `/api/generate-images` | POST | Generate multiple images for phrases |
-| `/api/arasaac/search/:language/:searchTerm` | GET | Search pictograms |
-| `/api/arasaac/pictogram/:language/:idPictogram` | GET | Get pictogram details |
-| `/api/arasaac/image/:idPictogram` | GET | Get pictogram image |
-| `/api/arasaac/search-multiple` | POST | Search multiple words |
-| `/api/categories` | GET | Get all categories (requires `?userId=`) |
-| `/api/categories` | POST | Create custom category (auth) |
-| `/api/categories/:categoryName` | GET | Get category pictograms (requires `?userId=`) |
-| `/api/categories/empty` | POST | Create empty category (auth) |
-| `/api/categories/:categoryName` | DELETE | Delete custom category (auth) |
-| `/api/categories/initialize` | POST | Initialize predefined categories |
-| `/api/user` | GET / PUT | Get or update user (auth) |
-| `/api/user/reset` | POST | Reset user to defaults (auth) |
-| `/api/user/initials` | GET | Get user initials (auth) |
-| `/api/avatar` | POST | Generate user avatar |
+There is no `.env.example` in the repository. Create the two files below and fill in your own values.
 
-**Auth**: endpoints marked *(auth)* require `Authorization: Bearer <userId>` or `userId` in body/query. For the full list with request/response details, see [backend/README.md](backend/README.md).
+`frontend/.env`:
 
-### Troubleshooting
+```env
+EXPO_PUBLIC_API_URL=
+EXPO_PUBLIC_FIREBASE_API_KEY=
+EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN=
+EXPO_PUBLIC_FIREBASE_PROJECT_ID=
+EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET=
+EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
+EXPO_PUBLIC_FIREBASE_APP_ID=
+EXPO_PUBLIC_FIREBASE_MEASUREMENT_ID=
+```
 
-**"API Key not configured"**
-- Verify the key is in the correct `.env` file
-- Restart the server after adding the key
+`EXPO_PUBLIC_FIREBASE_MEASUREMENT_ID` is optional (Firebase Analytics). `EXPO_PUBLIC_API_URL` defaults to `http://localhost:3000` if omitted.
 
-**"Cannot connect to backend"**
-- Verify backend server is running
-- Check `EXPO_PUBLIC_API_URL` matches your platform
+Set `EXPO_PUBLIC_API_URL` according to where you run the app:
 
-**"CORS Error"**
-- Always use backend proxy endpoints for ARASAAC
-- Never call external APIs directly from frontend
+- iOS Simulator or web: `http://localhost:3000`
+- Android emulator: `http://10.0.2.2:3000`
+- Physical device: `http://YOUR_LOCAL_IP:3000`
 
-**Android connection issues**
-- Use `http://10.0.2.2:3000` instead of `localhost`
+`backend/.env`:
 
----
+```env
+PORT=
+AZURE_OPENAI_PHRASE_URL=
+AZURE_OPENAI_PHRASE_KEY=
+AZURE_OPENAI_PHRASE_DEPLOYMENT=
+AZURE_OPENAI_IMAGE_ENDPOINT=
+AZURE_OPENAI_IMAGE_API_KEY=
+```
 
-## 📄 License
+`PORT` defaults to `3000`. `AZURE_OPENAI_PHRASE_DEPLOYMENT` defaults to `gpt-5-mini`. Image variables are required for flashcard illustrations.
 
-This project is an academic prototype developed for the **Advanced User Interfaces** course at:
+### Run
 
-<div align="center">
+In two terminals, from the repository root:
 
-![Politecnico di Milano](./assets/PolimiLogo.png)
+```bash
+npm run server
+```
 
-**Politecnico di Milano (Polimi)**
+```bash
+npm start
+```
 
-</div>
+`npm run server` starts the backend with `ts-node`. `npm start` starts the Expo dev server. For auto-reload on the backend, use `npm run server:dev`. To open a specific platform: `npm run frontend:android`, `npm run frontend:ios`, or `npm run frontend:web`.
 
----
+## 🙏 Credits
+
+Pictograms are from [ARASAAC](https://arasaac.org) and are used under the [Creative Commons BY-NC-SA](https://arasaac.org/terms-of-use) license.
+
+The pictographic symbols used are the property of the Government of Aragón and have been created by Sergio Palao for ARASAAC (http://www.arasaac.org), that distributes them under Creative Commons License BY-NC-SA.
 
 ## 👥 Authors
 
+Academic prototype developed for the **Advanced User Interfaces** course at Politecnico di Milano.
 
+<p align="center">
+  <img src="assets/PolimiLogo.png" alt="Politecnico di Milano" width="220">
+</p>
 
 | Author | Contact |
 |--------|---------|
 | Massimo Bakker | [mwgbakker@student.tudelft.nl](mailto:mwgbakker@student.tudelft.nl) |
 | Pablo Jesús Herrero Díaz | [pablojesus.herrero@mail.polimi.it](mailto:pablojesus.herrero@mail.polimi.it) |
 | José Martínez Estévez | [jose3.martinez@mail.polimi.it](mailto:jose3.martinez@mail.polimi.it) |
+
+## 📄 License
+
+MIT — see [LICENSE](LICENSE).
